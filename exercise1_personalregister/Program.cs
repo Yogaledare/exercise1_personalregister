@@ -185,8 +185,8 @@ class Program {
             private static int _lastId = 0;
 
             public int Id { get; }
-            public string Name { get; }
-            public int Salary { get; }
+            public string Name { get; set; }
+            public int Salary { get; set; }
 
 
             public Employee(string name, int salary) {
