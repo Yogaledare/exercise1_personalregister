@@ -12,7 +12,7 @@ class Program {
             Console.Write("$ ");
             var input = Console.ReadLine();
 
-            var parsedCommand = ValidateInput(input);
+            ICommand? parsedCommand = ValidateInput(input);
 
             if (parsedCommand == null) {
                 continue;
@@ -121,6 +121,7 @@ class Program {
     }
 
 
+    // add one command
     private record AddCommand(string Name, int Salary) : ICommand {
         public void Execute(EmployeeRegistry employeeRegistry) {
             employeeRegistry.AddEmployee(Name, Salary);
@@ -129,6 +130,7 @@ class Program {
     }
 
 
+    // list all command
     private record ListCommand : ICommand {
         public void Execute(EmployeeRegistry employeeRegistry) {
             var employees = employeeRegistry.GetEmployees();
@@ -143,6 +145,7 @@ class Program {
     }
 
 
+    // quit command
     private record QuitCommand : ICommand {
         public void Execute(EmployeeRegistry employeeRegistry) {
         }
@@ -181,6 +184,7 @@ class Program {
         }
 
 
+        // employee inner class
         private class Employee : IComparable<Employee> {
             private static int _lastId = 0;
 
